@@ -129,10 +129,10 @@ section
 .siteHeader.heroLoaded
 {
   opacity:    1;
-  
+
   visibility: visible;
-  
-  transition: opacity .6s ease;
+
+  transition: opacity .6s ease .15s;
 }
 
 .mainNav
@@ -201,7 +201,7 @@ section
   
   height:          44px;
   
-  border:          2px solid rgba(255, 255, 255, 0.6);
+  border:          2px solid rgba(255, 255, 255, 0.25);
   
   border-radius:   50%;
   
@@ -242,6 +242,45 @@ section
   
   background:   #ffffff;
 }
+
+.navGeoPill
+{
+  font-size:       10px;
+
+  letter-spacing:  0.1em;
+
+  text-transform:  uppercase;
+
+  color:           rgba(255, 255, 255, 0.4);
+
+  background:      rgba(255, 255, 255, 0.05);
+
+  border:          1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius:   999px;
+
+  padding:         6px 14px;
+
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  white-space:     nowrap;
+
+  opacity:         0;
+
+  visibility:      hidden;
+}
+
+.siteHeader.heroLoaded .navGeoPill
+{
+  opacity:    1;
+
+  visibility: visible;
+
+  transition: opacity .6s ease .3s;
+}
+
 
 .navCallTooltip
 {
@@ -468,488 +507,463 @@ section
 .heroContent
 {
   width:           min(100%, 1000px);
-  
-  min-height:      auto;
-  
-  padding-bottom:  0;
-  
-  text-align:      center;
-  
-  display:         flex;
-  
-  flex-direction:  column;
-  
-  align-items:     center;
-  
-  justify-content: center;
-}
 
-.heroEyebrow
-{
-  margin-bottom:  4px;
-  
-  color:          rgba(255, 255, 255, 0.7);
-  
-  letter-spacing: 6px;
-  
-  text-transform: uppercase;
-  
-  font-size:      12px;
-  
-  opacity:        0;
-  
-  visibility:     hidden;
-  
-  transform:      translateY(-20px);
+  height:          100%;
+
+  text-align:      center;
+
+  display:         flex;
+
+  flex-direction:  column;
+
+  align-items:     center;
+
+  justify-content: flex-start;
+
+  padding-top:     13vh;
+
+  gap:             20px;
 }
 
 .heroValueWrap
 {
-  width:          min(100%, 780px);
-  
-  margin:         0 auto 18px auto;
-  
-  display:        flex;
-  
+  width:      min(100%, 720px);
+
+  display:    flex;
+
   flex-direction: column;
-  
+
   align-items:    center;
-  
-  gap:            8px;
+
+  gap:            0;
 }
+
+.heroValueTitle { margin-bottom: 28px; }
+
+.heroValueText  { margin-bottom: 0; }
+
+.heroValueTitle
+{
+  font-family:    'Inter', sans-serif;
+
+  font-size:      clamp(30px, 3.8vw, 58px);
+
+  font-weight:    700;
+
+  line-height:    1.1;
+
+  letter-spacing: -0.02em;
+
+  text-align:     center;
+
+  text-wrap:      balance;
+
+  color:          #ffffff;
+
+  transition:     opacity .6s ease, transform .6s ease;
+}
+
+.heroValueText
+{
+  max-width:      600px;
+
+  font-size:      clamp(15px, 1.6vw, 19px);
+
+  line-height:    1.55;
+
+  letter-spacing: 0.01em;
+
+  color:          rgba(255, 255, 255, 0.78);
+
+  text-align:     center;
+
+  text-wrap:      balance;
+
+  transition:     opacity .6s ease, transform .6s ease;
+}
+
+.heroMicroText
+{
+  font-size:      11.5px;
+
+  letter-spacing: 0.09em;
+
+  text-transform: uppercase;
+
+  color:          rgba(255, 255, 255, 0.72);
+
+  text-align:     center;
+
+  transition:     opacity .6s ease, transform .6s ease;
+}
+
+/* ============================================================
+   FORCE INITIAL HIDDEN — all hero content invisible on load
+============================================================ */
+
+.heroValueTitle,
+.heroValueText,
+.heroMicroText
+{
+  opacity:    0;
+
+  visibility: hidden;
+
+  transform:  translateY(16px);
+}
+
+
+/* ============================================================
+   HERO VALUE TITLE
+============================================================ */
 
 .heroValueTitle
 {
   max-width:   700px;
-  
+
   font-size:   clamp(38px, 4.6vw, 72px);
-  
+
   line-height: 1.1;
-  
+
   font-weight: 600;
-  
+
   font-family: "Joan", serif;
-  
+
   text-align:  center;
-  
+
   text-wrap:   balance;
-  
-  opacity:     0;
-  
-  visibility:  hidden;
-  
-  transform:   translateX(30px);
+
+  transition:  opacity .6s ease, transform .6s ease;
 }
 
 
 
 .heroValueText
 {
-  max-width:   550px;
-  
-  color:       rgba(255, 255, 255, 0.9);
-  
-  font-size:   clamp(22px, 2.25vw, 28px);
-  
-  line-height: 1.38;
-  
-  text-align:  center;
-  
-  text-wrap:   balance;
-  
-  opacity:     0;
-  
-  visibility:  hidden;
+  max-width:      520px;
+
+  color:          rgba(255, 255, 255, 0.55);
+
+  font-size:      13px;
+
+  letter-spacing: 0.06em;
+
+  line-height:    1.5;
+
+  text-align:     center;
+
+  text-wrap:      balance;
+
+  text-transform: uppercase;
+
+  transition:     opacity .6s ease, transform .6s ease;
 }
 
 .heroCtaGroup
 {
   display:         flex;
-  
-  align-items:     center;
-  
-  justify-content: center;
-  
-  gap:             18px;
-  
-  flex-wrap:       wrap;
-  
-  margin-top:      clamp(10px, 2vh, 18px);
-  
-  margin-bottom:   14px;
-}
 
-.heroCta
-{
-  min-width:      210px;
-  
-  padding:        16px 26px;
-  
-  border:         1.5px solid rgba(255,255,255,0.6);
-  
-  border-radius:  999px;
-  
-  text-transform: uppercase;
-  
-  letter-spacing: 2px;
-  
-  font-size:      12px;
-  
-  font-family:    'Barlow Condensed', Arial, sans-serif;
-  
-  transition:
-    transform     .35s ease,
-    box-shadow    .35s ease,
-    background    .35s ease,
-    color         .35s ease,
-    border-color  .35s ease;
+  align-items:     center;
+
+  justify-content: center;
+
+  gap:             18px;
+
+  flex-wrap:       wrap;
+
+  margin-top:      32px;
+
+  margin-bottom:   16px;
 }
 
 /* ============================================================
-   GHOST CTA — LASER BORDER (FROM PREVIEW HUB)
+   GHOST CTA — LASER BORDER
 ============================================================ */
 
-@property --angle
+@property --laserAngle
 {
-  syntax: "<angle>";
+  syntax:        "<angle>";
   initial-value: 0deg;
-  inherits: false;
+  inherits:      false;
+}
+
+@keyframes laserTrace
+{
+  to { --laserAngle: 360deg; }
+}
+
+@keyframes arrowFloat
+{
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(5px); }
+  100% { transform: translateX(0); }
 }
 
 .ghostCta
 {
-  position:      relative;
-  
-  padding:       16px 34px;
-  
-  background:    #ffffff;
-  
-  color:         #111111;
-  
-  border:        2px solid #ffffff;
-  
-  border-radius: 12px;
-  
-  font-size:     12px;
-  
-  letter-spacing: 2px;
-  
-  text-transform: uppercase;
-  
-  display:       inline-flex;
-  
-  align-items:   center;
+  position:        relative;
+
+  display:         inline-flex;
+
+  align-items:     center;
 
   justify-content: center;
-  
-  overflow:      hidden;
-  
-  opacity:       0;
-  
-  visibility:    hidden;
-  
-  transform:     translateX(-20px);
-  
+
+  gap:             10px;
+
+  padding:         16px 40px;
+
+  font-family:     'Barlow Condensed', sans-serif;
+
+  font-size:       12px;
+
+  font-weight:     600;
+
+  letter-spacing:  0.18em;
+
+  text-transform:  uppercase;
+
+  cursor:          pointer;
+
+  outline:         none;
+
+  background:      transparent;
+
+  color:           #ffffff;
+
+  border:          1px solid rgba(255, 255, 255, 0.65);
+
+  border-radius:   999px;
+
   transition:
-    background .3s ease,
-    color .3s ease,
-    transform .3s ease;
+    background 0.3s ease,
+    color      0.3s ease,
+    transform  0.3s ease,
+    opacity    .6s ease;
 }
 
-.ghostCta span
+.ghostCta .ctaText,
+.ghostCta .ctaArrow
 {
   position: relative;
-  
+
   z-index:  1;
 }
 
 .ctaArrow
 {
-  margin-left: 10px;
-  
-  opacity: 0.7;
-  
   transition: transform .3s ease;
 }
 
 .ghostCta::before
 {
-  content: "";
-  
-  position: absolute;
-  
-  inset: 0;
-  
-  border-radius: 12px;
-  
-  padding: 2px;
-  
-  background: conic-gradient(
-    from var(--angle),
-    transparent 0deg,
-    transparent 320deg,
-    #050505 350deg,
-    #050505 360deg
-  );
-  
-  animation: borderTrace 4s linear infinite;
-  
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  
-  mask-composite: exclude;
-  
-  filter:
-    drop-shadow(0 0 6px rgba(5,5,5,0.24))
-    drop-shadow(0 0 14px rgba(5,5,5,0.16));
-}
+  content:        '';
 
-@keyframes borderTrace
-{
-  from { --angle: 0deg; }
-  
-  to   { --angle: 360deg; }
+  position:       absolute;
+
+  inset:          0;
+
+  border-radius:  999px;
+
+  padding:        2px;
+
+  background:     conic-gradient(
+    from var(--laserAngle),
+    transparent            0deg,
+    transparent          295deg,
+    rgba(255,255,255,0.06) 310deg,
+    rgba(255,255,255,0.35) 325deg,
+    rgba(255,255,255,0.85) 342deg,
+    #ffffff                350deg,
+    rgba(255,255,255,0.55) 356deg,
+    transparent            360deg
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  mask-composite: exclude;
+
+  animation:      laserTrace 2.6s linear infinite;
+
+  pointer-events: none;
 }
 
 .ghostCta:hover
 {
-  background: #050505;
-  
-  color: #ffffff;
-  
-  transform: translateY(-2px);
-  
-  box-shadow: 0 0 12px rgba(255,255,255,0.2);
+  background: #ffffff;
+
+  color:      #111111;
+
+  transform:  translateY(-2px);
 }
 
 .ghostCta:hover::before
 {
   background: conic-gradient(
-    from var(--angle),
-    transparent 0deg,
-    transparent 320deg,
-    #ffffff 350deg,
-    #ffffff 360deg
+    from var(--laserAngle),
+    transparent      0deg,
+    transparent    295deg,
+    rgba(0,0,0,0.06) 310deg,
+    rgba(0,0,0,0.35) 325deg,
+    rgba(0,0,0,0.85) 342deg,
+    #000000          350deg,
+    rgba(0,0,0,0.55) 356deg,
+    transparent      360deg
   );
-  
-  filter:
-    drop-shadow(0 0 6px rgba(255,255,255,0.8))
-    drop-shadow(0 0 14px rgba(255,255,255,0.6));
 }
 
 .ghostCta:hover .ctaArrow
 {
-  transform: translateX(4px);
+  animation: arrowFloat 0.9s ease-in-out infinite;
 }
+
+/* ============================================================
+   HERO TRUST TEXT
+============================================================ */
 
 .heroTrustText
 {
-  max-width:      480px;
-  
-  color:          rgba(255, 255, 255, 0.72);
-  
-  font-size:      14px;
-  
-  letter-spacing: 0.6px;
-  
-  margin-bottom:  8px;
-  
-  text-align:     center;
-  
-  text-wrap:      balance;
-  
-  opacity:        0;
-  
-  visibility:     hidden;
-}
+  font-family:    'Barlow Condensed', sans-serif;
 
-/* Hero state transitions */
+  font-size:      11px;
 
-.heroSection.heroMid .heroEyebrow
-{
-  opacity:    1;
-  
-  visibility: visible;
-  
-  transform:  translateY(0);
-  
-  transition:
-    opacity   .6s ease-out,
-    transform .6s ease-out;
-}
-
-.heroSection.heroLoaded .heroTrustText
-{
-  opacity:    1;
-  
-  visibility: visible;
-  
-  transition: opacity .6s ease;
-}
-
-.heroSection.heroLoaded .heroValueTitle
-{
-  opacity:    1;
-  
-  visibility: visible;
-  
-  transform:  translateX(0);
-  
-  transition:
-    opacity   .6s ease-out .25s,
-    transform .6s ease-out .25s;
-}
-
-.heroSection.heroLoaded .heroValueText
-{
-  opacity:    1;
-  
-  visibility: visible;
-  
-  transition: opacity .6s ease-out .4s;
-}
-
-.heroSection.heroLoaded .ghostCta
-{
-  opacity:    1;
-
-  visibility: visible;
-
-  transform:  translateX(0);
-
-  transition:
-    opacity   .6s ease-out .55s,
-    transform .6s ease-out .55s;
-}
-
-
-/* ============================================================
-   HERO HOOK
-============================================================ */
-
-.heroHook
-{
-  font-size:      1rem;
-
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
 
   text-transform: uppercase;
 
-  opacity:        0.85;
+  color:          rgba(255, 255, 255, 0.28);
 
-  margin-top:     10px;
+  transition:     opacity .6s ease, transform .6s ease;
 }
-
 
 /* ============================================================
-   GEO PILL
+   HERO CTA — BOTTOM OF VIEWPORT
 ============================================================ */
 
-.geoPill
+.heroCtaWrap
 {
-  display:              inline-block;
-
-  margin-top:           18px;
-
-  padding:              6px 14px;
-
-  border-radius:        999px;
-
-  font-size:            0.7rem;
-
-  letter-spacing:       0.08em;
-
-  text-transform:       uppercase;
-
-  background:           rgba(255, 255, 255, 0.06);
-
-  border:               1px solid rgba(255, 255, 255, 0.12);
-
-  backdrop-filter:      blur(10px);
-
-  -webkit-backdrop-filter: blur(10px);
-
-  opacity:              0.85;
-}
-
-
-/* ============================================================
-   SEO GLASS PILL (BELOW FOLD)
-============================================================ */
-
-.glassSeoPill
-{
-  max-width:              640px;
-
-  margin:                 80px auto 0 auto;
-
-  padding:                18px 22px;
-
-  border-radius:          999px;
-
-  background:             rgba(255, 255, 255, 0.04);
-
-  backdrop-filter:        blur(18px);
-
-  -webkit-backdrop-filter: blur(18px);
-
-  border:                 1px solid rgba(255, 255, 255, 0.08);
-
-  box-shadow:
-    0 0 40px rgba(255, 255, 255, 0.04),
-    inset 0 0 12px rgba(255, 255, 255, 0.03);
-
-  text-align:             center;
-}
-
-.glassSeoPill p
-{
-  font-size:     0.85rem;
-
-  line-height:   1.5;
-
-  color:         rgba(255, 255, 255, 0.75);
-
-  margin-bottom: 10px;
-}
-
-.seoPillLinks
-{
+  position:        absolute;
+  bottom:          60px;
+  left:            50%;
+  transform:       translateX(-50%);
+  z-index:         10;
+  opacity:         0;
+  visibility:      hidden;
+  transition:      opacity .6s ease, visibility .6s ease;
   display:         flex;
-
-  justify-content: center;
-
-  gap:             16px;
+  flex-direction:  column;
+  align-items:     center;
+  gap:             14px;
 }
 
-.seoPillLinks a
+.heroCtaWrap.isVisible
 {
-  font-size:       0.75rem;
-
-  color:           inherit;
-
-  opacity:         0.8;
-
-  text-decoration: none;
-
-  border-bottom:   1px solid rgba(255, 255, 255, 0.2);
-
-  transition:      all 0.2s ease;
+  opacity:   1;
+  visibility: visible;
 }
 
-.seoPillLinks a:hover
+.heroCta
 {
-  opacity:      1;
-
-  border-color: rgba(255, 255, 255, 0.6);
+  position:           relative;
+  display:            inline-flex;
+  align-items:        center;
+  justify-content:    center;
+  gap:                10px;
+  padding:            14px 32px;
+  font-family:        'Barlow Condensed', sans-serif;
+  font-size:          12px;
+  font-weight:        600;
+  letter-spacing:     0.18em;
+  text-transform:     uppercase;
+  cursor:             pointer;
+  outline:            none;
+  border-radius:      0;
+  text-decoration:    none;
+  white-space:        nowrap;
+  background:         transparent;
+  -webkit-appearance: none;
+  appearance:         none;
 }
 
+.ctaArrow { transition: transform 0.2s ease; }
+
+.heroCta:hover .ctaArrow { animation: arrowFloat 0.9s ease-in-out infinite; }
+
+.startProjectCta
+{
+  background:  transparent;
+  color:       #ffffff;
+  border:      1px solid rgba(255, 255, 255, 0.35);
+  transition:  background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.startProjectCta::before
+{
+  content:     '';
+  position:    absolute;
+  inset:       -1px;
+  padding:     1px;
+  background:  conic-gradient(
+    from var(--laserAngle),
+    transparent            0deg,
+    transparent          308deg,
+    rgba(255,255,255,0.04) 322deg,
+    rgba(255,255,255,0.22) 336deg,
+    rgba(255,255,255,0.72) 348deg,
+    #ffffff                354deg,
+    rgba(255,255,255,0.45) 358deg,
+    transparent            360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite:  exclude;
+  animation:       laserTrace 2.6s linear infinite;
+  pointer-events:  none;
+  border-radius:   0;
+}
+
+.startProjectCta:hover
+{
+  background:   #ffffff;
+  color:        #111111;
+  border-color: #ffffff;
+  transform:    translateY(-2px);
+}
+
+.startProjectCta:hover::before
+{
+  background: conic-gradient(
+    from var(--laserAngle),
+    transparent       0deg,
+    transparent     308deg,
+    rgba(0,0,0,0.04) 322deg,
+    rgba(0,0,0,0.22) 336deg,
+    rgba(0,0,0,0.72) 348deg,
+    #000000          354deg,
+    rgba(0,0,0,0.45) 358deg,
+    transparent      360deg
+  );
+}
+
+.startProjectCta .ctaText,
+.startProjectCta .ctaArrow
+{
+  position: relative;
+  z-index:  1;
+}
 
 /* ============================================================
    BOTTOM SCROLL BANNER — TRUE INFINITE TICKER
@@ -959,7 +973,7 @@ section
 {
   position:    fixed;
   
-  bottom:      env(safe-area-inset-bottom, 0px);
+  bottom:      0;
   
   left:        0;
   
@@ -996,7 +1010,7 @@ section
 {
   .scrollBanner
   {
-    bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    bottom: env(safe-area-inset-bottom, 0px);
   }
 }
 
@@ -1674,12 +1688,12 @@ section
 .newsletterTab
 {
   position: fixed;
-  
+
   right: 0;
-  
-  top: 50%;
-  
-  transform: translate(18px, -50%);
+
+  bottom: 80px;
+
+  transform: translate(18px, 0);
   
   writing-mode: vertical-rl;
   
@@ -1726,9 +1740,9 @@ section
 .newsletterTab.isVisible
 {
   opacity: 1;
-  
-  transform: translate(0, -50%);
-  
+
+  transform: translate(0, 0);
+
   animation: tabPulse 6s ease-in-out infinite;
 }
 
@@ -1788,14 +1802,14 @@ section
 {
   position: absolute;
   
-  top: 0;
-  
+  top: auto;
+
   right: 0;
-  
+
   width: 320px;
-  
+
   height: auto;
-  
+
   background: #050505;
   
   border-left: 1px solid rgba(255,255,255,0.95);
@@ -2237,46 +2251,6 @@ section
 
 
 /* ============================================================
-   KEYFRAMES
-============================================================ */
-
-@keyframes navLogoIn
-{
-  from { opacity: 0; transform: translateX(-20px); }
-  
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes heroValueTitleIn
-{
-  from { opacity: 0; transform: translateX(30px); }
-  
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes heroValueTextIn
-{
-  from { opacity: 0; }
-  
-  to   { opacity: 1; }
-}
-
-@keyframes heroCtaLeftIn
-{
-  from { opacity: 0; transform: translateX(-20px); }
-  
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes heroTrustTextIn
-{
-  from { opacity: 0; }
-  
-  to   { opacity: 1; }
-}
-
-
-/* ============================================================
    RESPONSIVE — 820px
 ============================================================ */
 
@@ -2297,11 +2271,6 @@ section
     padding: 0 18px;
   }
 
-  .heroTrustText
-  {
-    white-space: nowrap;
-  }
-
   .nuloLogo
   {
     width: min(82vw, 700px);
@@ -2314,6 +2283,33 @@ section
 }
 
 /* ============================================================
+   HERO — MOBILE LAYOUT FIXES
+============================================================ */
+
+@media (max-width: 768px)
+{
+  .heroSection
+  {
+    height: 100dvh;
+  }
+
+  .heroContent
+  {
+    padding-top: 7vh;
+  }
+
+  .heroCtaWrap
+  {
+    bottom: 52px;
+  }
+
+  .newsletterInner
+  {
+    width: min(300px, 88vw);
+  }
+}
+
+/* ============================================================
    SEE INSIDE NULO TAB — SLIM MOBILE VERSION
 ============================================================ */
 
@@ -2322,12 +2318,12 @@ section
   .newsletterTab
   {
     position: fixed;
-    
-    top: 50%;
-    
+
+    bottom: 112px;
+
     right: 0;
-    
-    transform: translateY(-50%);
+
+    transform: translate(0, 0);
     
     display: flex;
     
@@ -2574,11 +2570,6 @@ section
 
 @media (max-width: 520px)
 {
-  .heroEyebrow
-  {
-    letter-spacing: 4px;
-  }
-
   .heroValueWrap
   {
     width:         min(100%, 620px);
@@ -2597,18 +2588,18 @@ section
 
   .heroValueText
   {
-    max-width:   34ch;
-    
-    font-size:   19px;
-    
-    line-height: 1.35;
+    max-width:   32ch;
+
+    font-size:   11px;
   }
 
-  .heroCta
+  .ghostCta
   {
     width:     100%;
-    
+
     min-width: unset;
+
+    padding:   18px 32px;
   }
 
   .heroCtaGroup
@@ -2618,13 +2609,6 @@ section
     margin-top:    12px;
     
     margin-bottom: 12px;
-  }
-
-  .heroTrustText
-  {
-    max-width: 30ch;
-    
-    font-size: 13px;
   }
 
   .nuloLogo

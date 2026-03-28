@@ -234,6 +234,13 @@ function runLogoAnimation() {
 
   }, stage2Start);
 
+  // Fire hero reveal after logo animation fully completes
+  window.setTimeout(() => {
+
+    revealSequence();
+
+  }, stage2Start + FILL_DUR + 200);
+
 }
 
 /* ============================================================
@@ -280,19 +287,16 @@ function syncNewsletterPanelPosition() {
 
   if (!newsletterTab) return;
 
-  const panelTop = `${newsletterTab.getBoundingClientRect().top - 6}px`;
+  const tabRect          = newsletterTab.getBoundingClientRect();
+  const bottomFromScreen = window.innerHeight - tabRect.bottom;
 
-  if (newsletterInner) {
-
-    newsletterInner.style.top = panelTop;
-
-  }
-
-  if (buildUpdatesInner) {
-
-    buildUpdatesInner.style.top = panelTop;
-
-  }
+  [newsletterInner, buildUpdatesInner].forEach((el) => {
+    if (!el) return;
+    el.style.top       = "auto";
+    el.style.bottom    = `${bottomFromScreen}px`;
+    el.style.maxHeight = "";
+    el.style.overflowY = "";
+  });
 
 }
 
@@ -364,7 +368,7 @@ function initModal() {
 
   }
 
-  closeModalBtn.addEventListener("click", () => {
+  if (closeModalBtn) closeModalBtn.addEventListener("click", () => {
 
     closeModal();
 
@@ -652,23 +656,19 @@ function initFormSubmit() {
 
         }
 
-        if (successMsg) {
-
-          successMsg.classList.add("show");
-
-        }
+        showSuccessToast();
 
         window.setTimeout(() => {
 
-          if (buildUpdatesPanel) {
+          syncNewsletterPanelPosition();
 
-            buildUpdatesPanel.classList.add("open");
+          if (newsletterPanel) {
+
+            newsletterPanel.classList.add("open");
 
           }
 
-          prefillBuildUpdates();
-
-        }, 1200);
+        }, 1000);
 
       } else {
 
@@ -1110,6 +1110,50 @@ function initNewsletter() {
 
 /* ============================================================
 
+   REVEAL SEQUENCE — fires after logo animation completes
+
+============================================================ */
+
+function revealSequence() {
+
+  const ctaWrap   = document.querySelector(".heroCtaWrap");
+  const title     = document.querySelector(".heroValueTitle");
+  const subtext   = document.querySelector(".heroValueText");
+  const microText = document.querySelector(".heroMicroText");
+
+  const show = (el) => {
+    if (!el) return;
+    el.style.opacity    = "1";
+    el.style.visibility = "visible";
+    el.style.transform  = "translateY(0)";
+  };
+
+  // NAV
+  if (siteHeader) { siteHeader.classList.add("heroLoaded"); }
+
+  // HOOK
+  setTimeout(() => show(title),   200);
+
+  // SUBTEXT
+  setTimeout(() => show(subtext), 450);
+
+  // CTA + MICRO
+  setTimeout(() => {
+    ctaWrap?.classList.add("isVisible");
+    show(microText);
+  }, 700);
+
+  // BANNER + TAB
+  setTimeout(() => {
+    banner?.classList.add("isVisible");
+    newsletterTab?.classList.add("isVisible");
+    syncNewsletterPanelPosition();
+  }, 1000);
+
+}
+
+/* ============================================================
+
    INIT
 
 ============================================================ */
@@ -1120,14 +1164,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   syncNewsletterPanelPosition();
 
-  window.setTimeout(() => {
-
-    document.getElementById("newsletterTab")?.classList.add("isVisible");
-
-    syncNewsletterPanelPosition();
-
-  }, 4800);
-
   /* Logo wrap fade-in */
 
   if (heroLogoWrap) {
@@ -1137,30 +1173,6 @@ document.addEventListener("DOMContentLoaded", () => {
       heroLogoWrap.classList.add("isVisible");
 
     });
-
-  }
-
-  /* Hero state timing — heroMid reveals eyebrow, heroLoaded reveals full UI */
-
-  if (heroSection) {
-
-    window.setTimeout(() => {
-
-      heroSection.classList.add("heroMid");
-
-    }, 3100);
-
-    window.setTimeout(() => {
-
-      heroSection.classList.add("heroLoaded");
-
-      if (siteHeader) {
-
-        siteHeader.classList.add("heroLoaded");
-
-      }
-
-    }, 3500);
 
   }
 
@@ -1175,16 +1187,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initSuccessToast();
 
   initNewsletter();
-
-  window.setTimeout(() => {
-
-    if (banner) {
-
-      banner.classList.add("isVisible");
-
-    }
-
-  }, 4200);
 
 });
 
