@@ -818,14 +818,117 @@ section
 .heroSection.heroLoaded .ghostCta
 {
   opacity:    1;
-  
+
   visibility: visible;
-  
+
   transform:  translateX(0);
-  
+
   transition:
     opacity   .6s ease-out .55s,
     transform .6s ease-out .55s;
+}
+
+
+/* ============================================================
+   SEO PILL
+============================================================ */
+
+.seoPill
+{
+  width:            min(100%, 640px);
+
+  margin-top:       20px;
+
+  padding:          18px 24px;
+
+  background:       var(--panelDark);
+
+  border:           1px solid var(--panelBorder);
+
+  border-radius:    var(--radiusLg);
+
+  backdrop-filter:  blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  display:          flex;
+
+  flex-direction:   column;
+
+  align-items:      center;
+
+  gap:              14px;
+
+  text-align:       center;
+
+  opacity:          0;
+
+  visibility:       hidden;
+}
+
+.heroSection.heroLoaded .seoPill
+{
+  opacity:    1;
+
+  visibility: visible;
+
+  transition: opacity .6s ease .75s;
+}
+
+.seoPillText
+{
+  color:          var(--textMuted);
+
+  font-size:      13px;
+
+  font-weight:    300;
+
+  letter-spacing: 0.3px;
+
+  line-height:    1.65;
+
+  max-width:      56ch;
+
+  text-wrap:      balance;
+}
+
+.seoPillLinks
+{
+  display:     flex;
+
+  align-items: center;
+
+  gap:         24px;
+}
+
+.textLink
+{
+  color:          rgba(255, 255, 255, 0.38);
+
+  font-size:      11px;
+
+  font-weight:    400;
+
+  letter-spacing: 1.4px;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  border-bottom:  1px solid rgba(255, 255, 255, 0.15);
+
+  padding-bottom: 2px;
+
+  transition:
+    color        .25s ease,
+    border-color .25s ease;
+}
+
+.textLink:hover
+{
+  color:        rgba(255, 255, 255, 0.72);
+
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
 
