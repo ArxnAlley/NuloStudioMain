@@ -830,43 +830,39 @@ section
 
 
 /* ============================================================
-   SEO PILL
+   SEO GLASS PILL
 ============================================================ */
 
-.seoPill
+.glassSeoPill
 {
-  width:            min(100%, 640px);
+  max-width:              640px;
 
-  margin-top:       20px;
+  margin:                 32px auto 0 auto;
 
-  padding:          18px 24px;
+  padding:                18px 22px;
 
-  background:       var(--panelDark);
+  border-radius:          999px;
 
-  border:           1px solid var(--panelBorder);
+  background:             rgba(255, 255, 255, 0.05);
 
-  border-radius:    var(--radiusLg);
+  backdrop-filter:        blur(18px);
 
-  backdrop-filter:  blur(12px);
+  -webkit-backdrop-filter: blur(18px);
 
-  -webkit-backdrop-filter: blur(12px);
+  border:                 1px solid rgba(255, 255, 255, 0.08);
 
-  display:          flex;
+  box-shadow:
+    0 0 40px rgba(255, 255, 255, 0.05),
+    inset 0 0 12px rgba(255, 255, 255, 0.04);
 
-  flex-direction:   column;
+  text-align:             center;
 
-  align-items:      center;
+  opacity:                0;
 
-  gap:              14px;
-
-  text-align:       center;
-
-  opacity:          0;
-
-  visibility:       hidden;
+  visibility:             hidden;
 }
 
-.heroSection.heroLoaded .seoPill
+.heroSection.heroLoaded .glassSeoPill
 {
   opacity:    1;
 
@@ -875,60 +871,46 @@ section
   transition: opacity .6s ease .75s;
 }
 
-.seoPillText
+.glassSeoPill p
 {
-  color:          var(--textMuted);
+  font-size:     0.85rem;
 
-  font-size:      13px;
+  line-height:   1.5;
 
-  font-weight:    300;
+  color:         rgba(255, 255, 255, 0.75);
 
-  letter-spacing: 0.3px;
-
-  line-height:    1.65;
-
-  max-width:      56ch;
-
-  text-wrap:      balance;
+  margin-bottom: 10px;
 }
 
 .seoPillLinks
 {
-  display:     flex;
+  display:         flex;
 
-  align-items: center;
+  justify-content: center;
 
-  gap:         24px;
+  gap:             16px;
 }
 
-.textLink
+.seoPillLinks a
 {
-  color:          rgba(255, 255, 255, 0.38);
+  font-size:   0.75rem;
 
-  font-size:      11px;
+  color:       inherit;
 
-  font-weight:    400;
-
-  letter-spacing: 1.4px;
-
-  text-transform: uppercase;
+  opacity:     0.8;
 
   text-decoration: none;
 
-  border-bottom:  1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
-  padding-bottom: 2px;
-
-  transition:
-    color        .25s ease,
-    border-color .25s ease;
+  transition: all 0.2s ease;
 }
 
-.textLink:hover
+.seoPillLinks a:hover
 {
-  color:        rgba(255, 255, 255, 0.72);
+  opacity:      1;
 
-  border-color: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 
