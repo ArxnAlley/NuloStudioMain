@@ -830,20 +830,70 @@ section
 
 
 /* ============================================================
-   SEO GLASS PILL
+   HERO HOOK
+============================================================ */
+
+.heroHook
+{
+  font-size:      1rem;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  opacity:        0.85;
+
+  margin-top:     10px;
+}
+
+
+/* ============================================================
+   GEO PILL
+============================================================ */
+
+.geoPill
+{
+  display:              inline-block;
+
+  margin-top:           18px;
+
+  padding:              6px 14px;
+
+  border-radius:        999px;
+
+  font-size:            0.7rem;
+
+  letter-spacing:       0.08em;
+
+  text-transform:       uppercase;
+
+  background:           rgba(255, 255, 255, 0.06);
+
+  border:               1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter:      blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  opacity:              0.85;
+}
+
+
+/* ============================================================
+   SEO GLASS PILL (BELOW FOLD)
 ============================================================ */
 
 .glassSeoPill
 {
   max-width:              640px;
 
-  margin:                 32px auto 0 auto;
+  margin:                 80px auto 0 auto;
 
   padding:                18px 22px;
 
   border-radius:          999px;
 
-  background:             rgba(255, 255, 255, 0.05);
+  background:             rgba(255, 255, 255, 0.04);
 
   backdrop-filter:        blur(18px);
 
@@ -852,23 +902,10 @@ section
   border:                 1px solid rgba(255, 255, 255, 0.08);
 
   box-shadow:
-    0 0 40px rgba(255, 255, 255, 0.05),
-    inset 0 0 12px rgba(255, 255, 255, 0.04);
+    0 0 40px rgba(255, 255, 255, 0.04),
+    inset 0 0 12px rgba(255, 255, 255, 0.03);
 
   text-align:             center;
-
-  opacity:                0;
-
-  visibility:             hidden;
-}
-
-.heroSection.heroLoaded .glassSeoPill
-{
-  opacity:    1;
-
-  visibility: visible;
-
-  transition: opacity .6s ease .75s;
 }
 
 .glassSeoPill p
@@ -893,17 +930,17 @@ section
 
 .seoPillLinks a
 {
-  font-size:   0.75rem;
+  font-size:       0.75rem;
 
-  color:       inherit;
+  color:           inherit;
 
-  opacity:     0.8;
+  opacity:         0.8;
 
   text-decoration: none;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom:   1px solid rgba(255, 255, 255, 0.2);
 
-  transition: all 0.2s ease;
+  transition:      all 0.2s ease;
 }
 
 .seoPillLinks a:hover
