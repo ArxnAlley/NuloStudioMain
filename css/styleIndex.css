@@ -29,6 +29,17 @@
 
 
 /* ============================================================
+   TOUCH SUPPORT (MOBILE INTERACTIONS)
+============================================================ */
+
+button,
+a
+{
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ============================================================
    GLOBAL RESET
 ============================================================ */
 
@@ -44,22 +55,22 @@
 html
 {
   scroll-behavior: smooth;
-  
+
   overflow: hidden;
 }
 
 body
 {
   background: var(--bgBlack);
-  
+
   color: var(--textWhite);
-  
+
   font-family: 'Barlow Condensed', Arial, sans-serif;
-  
+
   line-height: 1.5;
-  
+
   overflow: hidden;
-  
+
   touch-action: none;
 }
 
@@ -202,8 +213,8 @@ section
   height:          44px;
   
   border:          2px solid rgba(255, 255, 255, 0.25);
-  
-  border-radius:   50%;
+
+  border-radius:   0;
   
   color:           rgba(255, 255, 255, 0.75);
   
@@ -234,12 +245,14 @@ section
 }
 
 .navPhone:hover,
-.navCallBtn.callDemoBtn:hover
+.navCallBtn.callDemoBtn:hover,
+.navPhone:active,
+.navCallBtn.callDemoBtn:active
 {
   color:        #050505;
-  
+
   border-color: #ffffff;
-  
+
   background:   #ffffff;
 }
 
@@ -333,6 +346,7 @@ section
 }
 
 .navCallBtn.callDemoBtn:hover .navCallTooltip,
+.navCallBtn.callDemoBtn:active .navCallTooltip,
 .navCallBtn.callDemoBtn:focus-visible .navCallTooltip
 {
   opacity: 1;
@@ -372,24 +386,15 @@ section
 
 
 /* ============================================================
-   NULO LOGO SVG
+   NULO LOGO — TRACE REVEAL
 ============================================================ */
-
-.nuloLogo
-{
-  width:   min(64vw, 760px);
-  
-  display: block;
-  
-  margin:  0 auto 8px auto;
-}
 
 .heroLogoWrap
 {
   opacity:    0;
-  
-  margin-top: -18px;
-  
+
+  margin-top: 0;
+
   transition: opacity .8s ease-out;
 }
 
@@ -398,55 +403,110 @@ section
   opacity: 1;
 }
 
-.logoDraw
+.logoStage
+{
+  position:        relative;
+
+  width:           min(72vw, 540px);
+
+  aspect-ratio:    1536 / 1024;
+
+  display:         flex;
+
+  align-items:     center;
+
+  justify-content: center;
+
+  margin:          0 auto;
+}
+
+.nuloWrap
+{
+  position: relative;
+
+  width:    100%;
+
+  height:   100%;
+}
+
+.nuloFillSvg,
+.nuloOutlineSvg
+{
+  position: absolute;
+
+  inset:    0;
+
+  width:    100%;
+
+  height:   100%;
+
+  display:  block;
+
+  overflow: visible;
+}
+
+.nuloFillSvg
+{
+  z-index:    1;
+
+  opacity:    0;
+
+  transition: opacity 0.38s ease;
+}
+
+.logoStage.isFilled .nuloFillSvg
+{
+  opacity: 1;
+}
+
+.bgPath
+{
+  display: none;
+}
+
+.nuloOutlineSvg
+{
+  z-index:    2;
+
+  opacity:    1;
+
+  transition: opacity 0.28s ease;
+}
+
+.logoStage.isFilled .nuloOutlineSvg
+{
+  opacity: 0;
+}
+
+.tracePath
 {
   fill:              none;
-  
-  stroke:            url(#metalStroke);
-  
-  stroke-width:      2.2;
-  
+
+  stroke:            #ffffff;
+
+  stroke-width:      2.35;
+
   stroke-linecap:    round;
-  
+
   stroke-linejoin:   round;
-  
-  stroke-dasharray:  2000;
-  
-  stroke-dashoffset: 2000;
-  
-  opacity:           0;
-  
-  transition:        none;
+
+  vector-effect:     non-scaling-stroke;
+
+  stroke-dasharray:  var(--pathLength, 1000);
+
+  stroke-dashoffset: var(--pathLength, 1000);
 }
 
-.logoFill
+@keyframes traceStroke
 {
-  opacity:    0;
-  
-  transition: none;
+  to { stroke-dashoffset: 0; }
 }
 
-.logoFillRing
-{
-  fill-rule:  evenodd;
-  
-  opacity:    0;
-  
-  transition: none;
-}
+/* Accent color for hero headline */
 
-.studioText
+.heroAccent
 {
-  opacity:    0;
-  
-  transition: none;
-}
-
-.studioLine
-{
-  opacity:    0;
-  
-  transition: none;
+  color: #7eb8f0;
 }
 
 
@@ -518,11 +578,11 @@ section
 
   align-items:     center;
 
-  justify-content: flex-start;
+  justify-content: center;
 
-  padding-top:     13vh;
+  padding:         72px 24px 100px;
 
-  gap:             20px;
+  gap:             12px;
 }
 
 .heroValueWrap
@@ -538,7 +598,7 @@ section
   gap:            0;
 }
 
-.heroValueTitle { margin-bottom: 28px; }
+.heroValueTitle { margin-bottom: 12px; }
 
 .heroValueText  { margin-bottom: 0; }
 
@@ -612,6 +672,31 @@ section
   transform:  translateY(16px);
 }
 
+.heroCtaGroup
+{
+  display:         flex;
+
+  align-items:     center;
+
+  justify-content: center;
+
+  gap:             18px;
+
+  flex-wrap:       wrap;
+
+  margin-top:      32px;
+
+  margin-bottom:   16px;
+
+  opacity:         0;
+
+  visibility:      hidden;
+
+  transform:       translateY(16px);
+
+  transition:      opacity .6s ease, visibility .6s ease, transform .6s ease;
+}
+
 
 /* ============================================================
    HERO VALUE TITLE
@@ -637,7 +722,6 @@ section
 }
 
 
-
 .heroValueText
 {
   max-width:      520px;
@@ -657,23 +741,6 @@ section
   text-transform: uppercase;
 
   transition:     opacity .6s ease, transform .6s ease;
-}
-
-.heroCtaGroup
-{
-  display:         flex;
-
-  align-items:     center;
-
-  justify-content: center;
-
-  gap:             18px;
-
-  flex-wrap:       wrap;
-
-  margin-top:      32px;
-
-  margin-bottom:   16px;
 }
 
 /* ============================================================
@@ -733,7 +800,7 @@ section
 
   border:          1px solid rgba(255, 255, 255, 0.65);
 
-  border-radius:   999px;
+  border-radius:   0;
 
   transition:
     background 0.3s ease,
@@ -763,7 +830,7 @@ section
 
   inset:          0;
 
-  border-radius:  999px;
+  border-radius:  0;
 
   padding:        2px;
 
@@ -796,7 +863,8 @@ section
   pointer-events: none;
 }
 
-.ghostCta:hover
+.ghostCta:hover,
+.ghostCta:active
 {
   background: #ffffff;
 
@@ -805,25 +873,152 @@ section
   transform:  translateY(-2px);
 }
 
-.ghostCta:hover::before
+.ghostCta:hover::before,
+.ghostCta:active::before
 {
-  background: conic-gradient(
-    from var(--laserAngle),
-    transparent      0deg,
-    transparent    295deg,
-    rgba(0,0,0,0.06) 310deg,
-    rgba(0,0,0,0.35) 325deg,
-    rgba(0,0,0,0.85) 342deg,
-    #000000          350deg,
-    rgba(0,0,0,0.55) 356deg,
-    transparent      360deg
-  );
+  animation: none;
+
+  background: transparent;
 }
 
-.ghostCta:hover .ctaArrow
+.ghostCta:hover .ctaArrow,
+.ghostCta:active .ctaArrow
 {
   animation: arrowFloat 0.9s ease-in-out infinite;
 }
+
+/* ============================================================
+   SOLID CTA — SMS / PRIMARY
+============================================================ */
+
+.heroCtaGroup:has(.solidCta:hover) .ghostCta::before,
+.heroCtaGroup:has(.solidCta:active) .ghostCta::before
+{
+  animation-play-state: paused;
+}
+
+.solidCta
+{
+  position:        relative;
+
+  display:         inline-flex;
+
+  align-items:     center;
+
+  justify-content: center;
+
+  gap:             10px;
+
+  padding:         16px 36px;
+
+  font-family:     'Barlow Condensed', sans-serif;
+
+  font-size:       12px;
+
+  font-weight:     600;
+
+  letter-spacing:  0.18em;
+
+  text-transform:  uppercase;
+
+  text-decoration: none;
+
+  background:      #ffffff;
+
+  color:           #111111;
+
+  border:          1px solid #ffffff;
+
+  cursor:          pointer;
+
+  transition:
+    background .3s ease,
+    color      .3s ease,
+    transform  .3s ease;
+}
+
+.solidCta::before
+{
+  content:        '';
+
+  position:       absolute;
+
+  inset:          0;
+
+  border-radius:  0;
+
+  padding:        2px;
+
+  background:     conic-gradient(
+    from var(--laserAngle),
+    transparent            0deg,
+    transparent          295deg,
+    rgba(255,255,255,0.06) 310deg,
+    rgba(255,255,255,0.35) 325deg,
+    rgba(255,255,255,0.85) 342deg,
+    #ffffff                350deg,
+    rgba(255,255,255,0.55) 356deg,
+    transparent            360deg
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  mask-composite:  exclude;
+
+  animation:       laserTrace 2.6s linear infinite;
+
+  pointer-events:  none;
+}
+
+.solidCta .ctaArrow
+{
+  display:    inline-block;
+
+  transition: transform .3s ease;
+}
+
+.solidCta:hover,
+.solidCta:active
+{
+  background: transparent;
+
+  color:      #ffffff;
+
+  transform:  translateY(-2px);
+}
+
+.solidCta:hover .ctaArrow,
+.solidCta:active .ctaArrow
+{
+  animation: arrowFloat 0.9s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   TOUCH PRESS STATE
+============================================================ */
+
+.solidCta:active,
+.ghostCta:active,
+.navCallBtn:active,
+.heroCta:active
+{
+  transform: scale(0.96);
+}
+
+.isPressed
+{
+  transform: scale(0.96);
+}
+
 
 /* ============================================================
    HERO TRUST TEXT
@@ -895,7 +1090,8 @@ section
 
 .ctaArrow { transition: transform 0.2s ease; }
 
-.heroCta:hover .ctaArrow { animation: arrowFloat 0.9s ease-in-out infinite; }
+.heroCta:hover .ctaArrow,
+.heroCta:active .ctaArrow { animation: arrowFloat 0.9s ease-in-out infinite; }
 
 .startProjectCta
 {
@@ -935,7 +1131,8 @@ section
   border-radius:   0;
 }
 
-.startProjectCta:hover
+.startProjectCta:hover,
+.startProjectCta:active
 {
   background:   #ffffff;
   color:        #111111;
@@ -2295,7 +2492,14 @@ section
 
   .heroContent
   {
-    padding-top: 7vh;
+    padding: 80px 20px 80px;
+
+    gap: 10px;
+  }
+
+  .logoStage
+  {
+    width: min(80vw, 420px);
   }
 
   .heroCtaWrap
