@@ -682,7 +682,7 @@ section
 
   gap:             18px;
 
-  flex-wrap:       wrap;
+  flex-wrap:       nowrap;
 
   margin-top:      32px;
 
@@ -2808,11 +2808,21 @@ section
 
   .heroCtaGroup
   {
-    gap:           14px;
-    
+    gap:           10px;
+
     margin-top:    12px;
-    
+
     margin-bottom: 12px;
+  }
+
+  .solidCta,
+  .ghostCta
+  {
+    padding:        14px 20px;
+
+    font-size:      11px;
+
+    letter-spacing: 0.14em;
   }
 
   .nuloLogo
