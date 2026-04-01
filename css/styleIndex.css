@@ -580,7 +580,7 @@ section
 
   justify-content: center;
 
-  padding:         72px 24px 100px;
+  padding:         72px 24px 140px;
 
   gap:             12px;
 }
@@ -907,9 +907,11 @@ section
 
   justify-content: center;
 
+  white-space:     nowrap;
+
   gap:             10px;
 
-  padding:         16px 36px;
+  padding:         16px 40px;
 
   font-family:     'Barlow Condensed', sans-serif;
 
@@ -2818,7 +2820,7 @@ section
   .solidCta,
   .ghostCta
   {
-    padding:        14px 20px;
+    padding:        14px 22px;
 
     font-size:      11px;
 
